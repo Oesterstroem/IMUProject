@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<rhd>
+ <sheduler>
+   <period value="10000"/>
+   <type value="LXRT"/>
+ </sheduler>
+ <server>
+   <port value="24902"/>
+   <clients number="10" allwriters="1"/>
+ </server>
+ <plugins basepath="/usr/local/smr/lib/rhdplugin/">
+   <joycontrol enable="true" 
+                   lib="libjoycontrol.so.1" 
+                   critical="false" 
+                   safety="1">
+     <joystick port="/dev/input/js0"/>
+     <speed maxfwd="900" 
+          maxturn="900"
+          fastBut="5"
+          slowFactor="0.3"/>
+     <deadband max="767" min="-767"/>
+     <control enable="true"/>
+   </joycontrol>
+   <rhdlog enable="true"
+         lib="rhdlog.so.1"
+         critical="false"
+         interval="1"
+         safety="2"
+         debug="0">
+   </rhdlog>
+   <imuserial enable="true"
+         lib="imuserial.so.1"
+         critical="true"
+         safety="3"
+         <serial port="/dev/ttyAMA0" baudrate="115200"/>
+   </imuserial>
+ </plugins>
+</rhd>
+
+
+
+
+
+
+
+
+
